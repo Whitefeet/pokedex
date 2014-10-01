@@ -2,10 +2,12 @@
 
   var app = angular.module('pokedex', [
     'ngRoute',
+    'angular-md5',
     'pokedex.controllers',
     'pokedex.directives',
     'pokedex.filters',
-    'pokedex.services'
+    'pokedex.services',
+    'ui.bootstrap'
   ]);
 
   app.config(['$routeProvider', function ($routeProvider) {

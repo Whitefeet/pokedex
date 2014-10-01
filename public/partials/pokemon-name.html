@@ -1,5 +1,5 @@
 <h1>
-  {{pokemon.name}}
+   <a href="/#pokemon/{{pokemon.name | normalize}}">{{pokemon.name}}</a>
   <small>{{pokemon.species}}</small>
   <span class="label label-primary pull-right">#{{pokemon.id}}</span>
 </h1>

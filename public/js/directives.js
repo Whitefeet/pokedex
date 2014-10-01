@@ -1,6 +1,13 @@
 (function () {
 
   angular.module('pokedex.directives', [])
+    .directive('pokemonCard', function () {
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/pokemon-card.html'
+      }
+    })
+
     .directive('pokemonName', function () {
       return {
         restrict: 'E',
@@ -80,6 +87,42 @@
             $scope.comment = {};
           };
 
+        }
+      };
+    }])
+
+    .directive('pokemonRating', ['pokemonService', function(pokemonService) {
+      return {
+        restrict: 'E',
+        templateUrl: 'partials/pokemon-rating.html',
+        scope: {
+          name: '@name'
+        },
+        controller: function ($scope) {
+          $scope.rate = pokemonService.getRating($scope.name);
+          $scope.max = 10;
+          $scope.isReadonly = false;
+          $scope.overStar = $scope.rate;
+
+          $scope.hoveringOver = function(value) {
+            $scope.overStar = value;
+            //$scope.percent = 100 * (value / $scope.max);
+          };
+
+          $scope.$watch('rate', function(value) {
+            if(value != undefined) pokemonService.saveRating($scope.name, value);
+          });
+        }
+      };
+    }])
+
+    .directive('backButton', ['$window', function($window){
+      return {
+        restrict: 'A',
+        link: function(scope, elem, attrs) {
+          elem.bind('click', function() {
+            $window.history.back();
+          });
         }
       };
     }]);

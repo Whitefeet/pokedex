@@ -55,8 +55,8 @@
         return deferred.promise;
       }
 
-
-      function saveComment(pokemon, comment) {
+function
+       saveComment(pokemon, comment) {
         var comments = getComments(pokemon);
 
         comments.push(comment);
@@ -75,12 +75,24 @@
         return comments;
       }
 
+      function saveRating(pokemon, rating) {
+        localStorage.setItem(pokemon+"-rating", rating);
+      }
+
+      function getRating(pokemon) {
+        var rating = localStorage.getItem(pokemon+"-rating");
+        if(rating === null) {rating = 0;}
+        return rating;
+      }
+
       return {
         all: all,
         byName: byName,
         byType: byType,
         saveComment: saveComment,
-        getComments: getComments
+        getComments: getComments,
+        saveRating: saveRating,
+        getRating: getRating
       };
 
     }]);

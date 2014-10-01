@@ -21,10 +21,10 @@
         </div>
       </div>
     </form>
-    <blockquote ng-repeat="comment in comments">
+    <blockquote class="row" ng-repeat="comment in comments | orderBy:'date':true">
       <p>{{comment.body}}</p>
       <footer>
-        Comment by 
+        <img ng-src="http://www.gravatar.com/avatar/{{ comment.email | gravatar }}" class="img-rounded"> Comment by 
         <a ng-if="!comment.anonymous" href="mailto:{{comment.email}}">{{comment.email}}</a> 
         <em ng-if="comment.anonymous">Anonymous</em>
         on <span>{{comment.date | date : 'medium'}}</span>

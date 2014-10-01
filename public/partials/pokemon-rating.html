@@ -1,0 +1,7 @@
+<div class="text-center">
+<h4>Rate {{name}}: </h4>
+  <div class="rating">
+    <rating ng-model="rate" ng-change="rating(value)" max="max" on-hover="hoveringOver(value)" on-leave="overStar = rate"></rating>
+    <span class="label label-default">{{overStar}}/{{max}}</span>
+  </div>
+</div>

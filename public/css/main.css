@@ -129,7 +129,7 @@ body {
   height: 350px;
 }
 
-.pokemon h1 {
+.pokemon h1, .pokemon h1 > a  {
   margin: 0;
   color: #fff;
   font-size: 18px;
@@ -159,3 +159,11 @@ body {
   font-size: 22px;
 }
 
+.rating span {
+  outline: 0;
+}
+
+.rating i.glyphicon {
+  color: red;
+  font-size: 1.5em;
+}
