@@ -78,6 +78,10 @@
       $scope.rating = function(value) {
         pokemonService.saveRating($scope.name, value);
       }
+    }])
+
+    .controller('NavBarController', ['$scope', function ($scope) {
+      $scope.isCollapsed = true;
     }]);
 
 })(_);
